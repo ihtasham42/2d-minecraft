@@ -561,8 +561,12 @@ while run:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 4:
                 player.tileTypeInHandIndex += 1
+                if player.tileTypeInHandIndex == len(playerTiles):
+                    player.tileTypeInHandIndex = 0
             if event.button == 5:
                 player.tileTypeInHandIndex -= 1
+                if player.tileTypeInHandIndex < 0:
+                    player.tileTypeInHandIndex = len(playerTiles) - 1
 
     draw()
 
