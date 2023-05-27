@@ -503,8 +503,11 @@ def generateSchematic(schematic, x, y):
         layerNumber = getLayerNumber(layer)
         for tileType in schematic[layer]:
             for tilePosition in schematic[layer][tileType]:
-                tile = grid[layerNumber][y + tilePosition[1]][x + tilePosition[0]]
-                tile.setTile(tileType)
+                fx = x + tilePosition[0]
+                fy = y + tilePosition[1]
+                if fx < rows and fx >= 0 and fy < rows and fy >= 0:
+                    tile = grid[layerNumber][fy][fx]
+                    tile.setTile(tileType)
 
 def generateTrees():
     treeTiles = []
